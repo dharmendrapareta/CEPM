@@ -1,5 +1,0 @@
-c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMBL\bin\Debug\CEPMBL.dll
-c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMBL\bin\Debug\CEPMBL.pdb
-c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMBL\obj\Debug\CEPMBL.csprojResolveAssemblyReference.cache
-c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMBL\obj\Debug\CEPMBL.dll
-c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMBL\obj\Debug\CEPMBL.pdb
