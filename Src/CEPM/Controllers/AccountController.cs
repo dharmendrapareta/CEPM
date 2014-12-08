@@ -31,7 +31,7 @@ namespace CEPM.Controllers
                     var password = model.Password;
 
                     var userId = manager.GetUserLoginId(userName, password);
-                    if (string.IsNullOrEmpty(userId))
+                    if (!string.IsNullOrEmpty(userId))
                     {
                         if (HttpContext.Session != null) 
                             HttpContext.Session["User"] = userId;

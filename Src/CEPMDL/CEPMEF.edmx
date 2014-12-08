@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CEPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CEPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -811,141 +811,34 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             <End Role="UserProfile" EntitySet="UserProfile" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CEPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="CEPMEF" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Companies" EntityType="CEPMModel.Company" />
-          <EntitySet Name="CompanyContacts" EntityType="CEPMModel.CompanyContact" />
-          <EntitySet Name="CompanyDesignations" EntityType="CEPMModel.CompanyDesignation" />
-          <EntitySet Name="CompanyDesignationRoles" EntityType="CEPMModel.CompanyDesignationRole" />
-          <EntitySet Name="CompanyDevices" EntityType="CEPMModel.CompanyDevice" />
-          <EntitySet Name="CompanyHolidays" EntityType="CEPMModel.CompanyHoliday" />
-          <EntitySet Name="EmployeeLeaves" EntityType="CEPMModel.EmployeeLeave" />
-          <EntitySet Name="PrjectWikis" EntityType="CEPMModel.PrjectWiki" />
-          <EntitySet Name="Projects" EntityType="CEPMModel.Project" />
-          <EntitySet Name="ProjectBugs" EntityType="CEPMModel.ProjectBug" />
-          <EntitySet Name="ProjectTasks" EntityType="CEPMModel.ProjectTask" />
-          <EntitySet Name="RefTypes" EntityType="CEPMModel.RefType" />
-          <EntitySet Name="Users" EntityType="CEPMModel.User" />
-          <EntitySet Name="CompanyEmployees" EntityType="CEPMModel.CompanyEmployee" />
-          <EntitySet Name="EmployeeDevices" EntityType="CEPMModel.EmployeeDevice" />
-          <EntitySet Name="EmployeesAttandanceDetails" EntityType="CEPMModel.EmployeesAttandanceDetail" />
-          <EntitySet Name="ProjectMembers" EntityType="CEPMModel.ProjectMember" />
-          <EntitySet Name="UserProfiles" EntityType="CEPMModel.UserProfile" />
-          <AssociationSet Name="FK_CompanyContact_Company" Association="CEPMModel.FK_CompanyContact_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="CompanyContact" EntitySet="CompanyContacts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyDesignation_Company" Association="CEPMModel.FK_CompanyDesignation_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyEmployee_Company" Association="CEPMModel.FK_CompanyEmployee_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyHoliday_Company" Association="CEPMModel.FK_CompanyHoliday_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="CompanyHoliday" EntitySet="CompanyHolidays" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeDevice_Company" Association="CEPMModel.FK_EmployeeDevice_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeLeave_Company" Association="CEPMModel.FK_EmployeeLeave_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectMember_Company" Association="CEPMModel.FK_ProjectMember_Company">
-            <End Role="Company" EntitySet="Companies" />
-            <End Role="ProjectMember" EntitySet="ProjectMembers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyDesignation_CompanyContact" Association="CEPMModel.FK_CompanyDesignation_CompanyContact">
-            <End Role="CompanyContact" EntitySet="CompanyContacts" />
-            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyDevice_CompanyContact" Association="CEPMModel.FK_CompanyDevice_CompanyContact">
-            <End Role="CompanyContact" EntitySet="CompanyContacts" />
-            <End Role="CompanyDevice" EntitySet="CompanyDevices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyDesignationRole_CompanyDesignation" Association="CEPMModel.FK_CompanyDesignationRole_CompanyDesignation">
-            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
-            <End Role="CompanyDesignationRole" EntitySet="CompanyDesignationRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyEmployee_CompanyDesignation" Association="CEPMModel.FK_CompanyEmployee_CompanyDesignation">
-            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
-            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeDevice_CompanyDevice" Association="CEPMModel.FK_EmployeeDevice_CompanyDevice">
-            <End Role="CompanyDevice" EntitySet="CompanyDevices" />
-            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeLeave_User" Association="CEPMModel.FK_EmployeeLeave_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PrjectWiki_Project" Association="CEPMModel.FK_PrjectWiki_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="PrjectWiki" EntitySet="PrjectWikis" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectBug_Project" Association="CEPMModel.FK_ProjectBug_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="ProjectBug" EntitySet="ProjectBugs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectMember_Project" Association="CEPMModel.FK_ProjectMember_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="ProjectMember" EntitySet="ProjectMembers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectTask_Project" Association="CEPMModel.FK_ProjectTask_Project">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="ProjectTask" EntitySet="ProjectTasks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyEmployee_User" Association="CEPMModel.FK_CompanyEmployee_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeeDevice_User" Association="CEPMModel.FK_EmployeeDevice_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="CEPMModel.FK_EmployeesAttandanceDetail_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="EmployeesAttandanceDetail" EntitySet="EmployeesAttandanceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProjectMember_User" Association="CEPMModel.FK_ProjectMember_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="ProjectMember" EntitySet="ProjectMembers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfile_User" Association="CEPMModel.FK_UserProfile_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserProfile" EntitySet="UserProfiles" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EstablishedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TinNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RegistrationNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TinNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CompanyContact" Relationship="CEPMModel.FK_CompanyContact_Company" FromRole="Company" ToRole="CompanyContact" />
-          <NavigationProperty Name="CompanyDesignations" Relationship="CEPMModel.FK_CompanyDesignation_Company" FromRole="Company" ToRole="CompanyDesignation" />
-          <NavigationProperty Name="CompanyEmployees" Relationship="CEPMModel.FK_CompanyEmployee_Company" FromRole="Company" ToRole="CompanyEmployee" />
-          <NavigationProperty Name="CompanyHolidays" Relationship="CEPMModel.FK_CompanyHoliday_Company" FromRole="Company" ToRole="CompanyHoliday" />
-          <NavigationProperty Name="EmployeeDevices" Relationship="CEPMModel.FK_EmployeeDevice_Company" FromRole="Company" ToRole="EmployeeDevice" />
-          <NavigationProperty Name="EmployeeLeaves" Relationship="CEPMModel.FK_EmployeeLeave_Company" FromRole="Company" ToRole="EmployeeLeave" />
-          <NavigationProperty Name="ProjectMembers" Relationship="CEPMModel.FK_ProjectMember_Company" FromRole="Company" ToRole="ProjectMember" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Company" FromRole="Company" ToRole="CompanyContact" />
+          <NavigationProperty Name="CompanyDesignations" Relationship="Self.FK_CompanyDesignation_Company" FromRole="Company" ToRole="CompanyDesignation" />
+          <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_Company" FromRole="Company" ToRole="CompanyEmployee" />
+          <NavigationProperty Name="CompanyHolidays" Relationship="Self.FK_CompanyHoliday_Company" FromRole="Company" ToRole="CompanyHoliday" />
+          <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_Company" FromRole="Company" ToRole="EmployeeDevice" />
+          <NavigationProperty Name="EmployeeLeaves" Relationship="Self.FK_EmployeeLeave_Company" FromRole="Company" ToRole="EmployeeLeave" />
+          <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_Company" FromRole="Company" ToRole="ProjectMember" />
         </EntityType>
         <EntityType Name="CompanyContact">
           <Key>
@@ -953,52 +846,52 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="Addresss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TelPhone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TelPhone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_CompanyContact_Company" FromRole="CompanyContact" ToRole="Company" />
-          <NavigationProperty Name="CompanyDesignations" Relationship="CEPMModel.FK_CompanyDesignation_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDesignation" />
-          <NavigationProperty Name="CompanyDevices" Relationship="CEPMModel.FK_CompanyDevice_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDevice" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyContact_Company" FromRole="CompanyContact" ToRole="Company" />
+          <NavigationProperty Name="CompanyDesignations" Relationship="Self.FK_CompanyDesignation_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDesignation" />
+          <NavigationProperty Name="CompanyDevices" Relationship="Self.FK_CompanyDevice_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDevice" />
         </EntityType>
         <EntityType Name="CompanyDesignation">
           <Key>
             <PropertyRef Name="DesignationId" />
           </Key>
           <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_CompanyDesignation_Company" FromRole="CompanyDesignation" ToRole="Company" />
-          <NavigationProperty Name="CompanyContact" Relationship="CEPMModel.FK_CompanyDesignation_CompanyContact" FromRole="CompanyDesignation" ToRole="CompanyContact" />
-          <NavigationProperty Name="CompanyDesignationRoles" Relationship="CEPMModel.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyDesignationRole" />
-          <NavigationProperty Name="CompanyEmployees" Relationship="CEPMModel.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyEmployee" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyDesignation_Company" FromRole="CompanyDesignation" ToRole="Company" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyDesignation_CompanyContact" FromRole="CompanyDesignation" ToRole="CompanyContact" />
+          <NavigationProperty Name="CompanyDesignationRoles" Relationship="Self.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyDesignationRole" />
+          <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyEmployee" />
         </EntityType>
         <EntityType Name="CompanyDesignationRole">
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
           <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isApplied" Type="Boolean" Nullable="false" />
           <Property Name="DesignationId" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CompanyDesignation" Relationship="CEPMModel.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignationRole" ToRole="CompanyDesignation" />
+          <NavigationProperty Name="CompanyDesignation" Relationship="Self.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignationRole" ToRole="CompanyDesignation" />
         </EntityType>
         <EntityType Name="CompanyDevice">
           <Key>
@@ -1006,7 +899,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1014,12 +907,12 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="TerminationDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CompanyContact" Relationship="CEPMModel.FK_CompanyDevice_CompanyContact" FromRole="CompanyDevice" ToRole="CompanyContact" />
-          <NavigationProperty Name="EmployeeDevices" Relationship="CEPMModel.FK_EmployeeDevice_CompanyDevice" FromRole="CompanyDevice" ToRole="EmployeeDevice" />
+          <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyDevice_CompanyContact" FromRole="CompanyDevice" ToRole="CompanyContact" />
+          <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_CompanyDevice" FromRole="CompanyDevice" ToRole="EmployeeDevice" />
         </EntityType>
         <EntityType Name="CompanyHoliday">
           <Key>
@@ -1027,16 +920,16 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="HolidayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
-          <Property Name="HolidayName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HolidayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsShifted" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_CompanyHoliday_Company" FromRole="CompanyHoliday" ToRole="Company" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyHoliday_Company" FromRole="CompanyHoliday" ToRole="Company" />
         </EntityType>
         <EntityType Name="EmployeeLeave">
           <Key>
@@ -1049,12 +942,12 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsAllow" Type="Boolean" Nullable="false" />
           <Property Name="IsFull" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_EmployeeLeave_Company" FromRole="EmployeeLeave" ToRole="Company" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeeLeave_User" FromRole="EmployeeLeave" ToRole="User" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_EmployeeLeave_Company" FromRole="EmployeeLeave" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="Self.FK_EmployeeLeave_User" FromRole="EmployeeLeave" ToRole="User" />
         </EntityType>
         <EntityType Name="PrjectWiki">
           <Key>
@@ -1062,13 +955,13 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="ProjectNoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Project" Relationship="CEPMModel.FK_PrjectWiki_Project" FromRole="PrjectWiki" ToRole="Project" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_PrjectWiki_Project" FromRole="PrjectWiki" ToRole="Project" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -1076,8 +969,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -1087,21 +980,21 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="EstimationDays" Type="Int32" />
           <Property Name="EstimateCost" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="budgetHours" Type="Int32" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PrjectWikis" Relationship="CEPMModel.FK_PrjectWiki_Project" FromRole="Project" ToRole="PrjectWiki" />
-          <NavigationProperty Name="ProjectBugs" Relationship="CEPMModel.FK_ProjectBug_Project" FromRole="Project" ToRole="ProjectBug" />
-          <NavigationProperty Name="ProjectMembers" Relationship="CEPMModel.FK_ProjectMember_Project" FromRole="Project" ToRole="ProjectMember" />
-          <NavigationProperty Name="ProjectTasks" Relationship="CEPMModel.FK_ProjectTask_Project" FromRole="Project" ToRole="ProjectTask" />
+          <NavigationProperty Name="PrjectWikis" Relationship="Self.FK_PrjectWiki_Project" FromRole="Project" ToRole="PrjectWiki" />
+          <NavigationProperty Name="ProjectBugs" Relationship="Self.FK_ProjectBug_Project" FromRole="Project" ToRole="ProjectBug" />
+          <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_Project" FromRole="Project" ToRole="ProjectMember" />
+          <NavigationProperty Name="ProjectTasks" Relationship="Self.FK_ProjectTask_Project" FromRole="Project" ToRole="ProjectTask" />
         </EntityType>
         <EntityType Name="ProjectBug">
           <Key>
             <PropertyRef Name="ProjectBugId" />
           </Key>
           <Property Name="ProjectBugId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="Assign" Type="Int32" Nullable="false" />
@@ -1110,44 +1003,44 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
           <Property Name="IsStart" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Project" Relationship="CEPMModel.FK_ProjectBug_Project" FromRole="ProjectBug" ToRole="Project" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectBug_Project" FromRole="ProjectBug" ToRole="Project" />
         </EntityType>
         <EntityType Name="ProjectTask">
           <Key>
             <PropertyRef Name="ProjectTaskId" />
           </Key>
           <Property Name="ProjectTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="TaskTime" Type="Int32" Nullable="false" />
           <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
           <Property Name="IsStart" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Project" Relationship="CEPMModel.FK_ProjectTask_Project" FromRole="ProjectTask" ToRole="Project" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectTask_Project" FromRole="ProjectTask" ToRole="Project" />
         </EntityType>
         <EntityType Name="RefType">
           <Key>
             <PropertyRef Name="RefId" />
           </Key>
           <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="User">
@@ -1156,27 +1049,27 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsEmailVerify" Type="Boolean" Nullable="false" />
           <Property Name="IsMobileVerify" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LoginAttempt" Type="Int32" Nullable="false" />
           <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EmployeeLeaves" Relationship="CEPMModel.FK_EmployeeLeave_User" FromRole="User" ToRole="EmployeeLeave" />
-          <NavigationProperty Name="CompanyEmployees" Relationship="CEPMModel.FK_CompanyEmployee_User" FromRole="User" ToRole="CompanyEmployee" />
-          <NavigationProperty Name="EmployeeDevices" Relationship="CEPMModel.FK_EmployeeDevice_User" FromRole="User" ToRole="EmployeeDevice" />
-          <NavigationProperty Name="EmployeesAttandanceDetails" Relationship="CEPMModel.FK_EmployeesAttandanceDetail_User" FromRole="User" ToRole="EmployeesAttandanceDetail" />
-          <NavigationProperty Name="ProjectMembers" Relationship="CEPMModel.FK_ProjectMember_User" FromRole="User" ToRole="ProjectMember" />
-          <NavigationProperty Name="UserProfiles" Relationship="CEPMModel.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
+          <NavigationProperty Name="EmployeeLeaves" Relationship="Self.FK_EmployeeLeave_User" FromRole="User" ToRole="EmployeeLeave" />
+          <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_User" FromRole="User" ToRole="CompanyEmployee" />
+          <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_User" FromRole="User" ToRole="EmployeeDevice" />
+          <NavigationProperty Name="EmployeesAttandanceDetails" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="User" ToRole="EmployeesAttandanceDetail" />
+          <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_User" FromRole="User" ToRole="ProjectMember" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
         </EntityType>
         <EntityType Name="CompanyEmployee">
           <Key>
@@ -1193,13 +1086,13 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="DesignationId" Type="Int32" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_CompanyEmployee_Company" FromRole="CompanyEmployee" ToRole="Company" />
-          <NavigationProperty Name="CompanyDesignation" Relationship="CEPMModel.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyEmployee" ToRole="CompanyDesignation" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_CompanyEmployee_User" FromRole="CompanyEmployee" ToRole="User" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyEmployee_Company" FromRole="CompanyEmployee" ToRole="Company" />
+          <NavigationProperty Name="CompanyDesignation" Relationship="Self.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyEmployee" ToRole="CompanyDesignation" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CompanyEmployee_User" FromRole="CompanyEmployee" ToRole="User" />
         </EntityType>
         <EntityType Name="EmployeeDevice">
           <Key>
@@ -1217,13 +1110,13 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
           <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SubmitDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_EmployeeDevice_Company" FromRole="EmployeeDevice" ToRole="Company" />
-          <NavigationProperty Name="CompanyDevice" Relationship="CEPMModel.FK_EmployeeDevice_CompanyDevice" FromRole="EmployeeDevice" ToRole="CompanyDevice" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeeDevice_User" FromRole="EmployeeDevice" ToRole="User" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_EmployeeDevice_Company" FromRole="EmployeeDevice" ToRole="Company" />
+          <NavigationProperty Name="CompanyDevice" Relationship="Self.FK_EmployeeDevice_CompanyDevice" FromRole="EmployeeDevice" ToRole="CompanyDevice" />
+          <NavigationProperty Name="User" Relationship="Self.FK_EmployeeDevice_User" FromRole="EmployeeDevice" ToRole="User" />
         </EntityType>
         <EntityType Name="EmployeesAttandanceDetail">
           <Key>
@@ -1244,11 +1137,11 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndTime" Type="DateTime" Precision="3" />
           <Property Name="TotalTime" Type="Int32" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeesAttandanceDetail_User" FromRole="EmployeesAttandanceDetail" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="EmployeesAttandanceDetail" ToRole="User" />
         </EntityType>
         <EntityType Name="ProjectMember">
           <Key>
@@ -1268,13 +1161,13 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="ProjectMemberTypeId" Type="Int32" Nullable="false" />
           <Property Name="AssignDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LeaveDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Company" Relationship="CEPMModel.FK_ProjectMember_Company" FromRole="ProjectMember" ToRole="Company" />
-          <NavigationProperty Name="Project" Relationship="CEPMModel.FK_ProjectMember_Project" FromRole="ProjectMember" ToRole="Project" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_ProjectMember_User" FromRole="ProjectMember" ToRole="User" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_ProjectMember_Company" FromRole="ProjectMember" ToRole="Company" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectMember_Project" FromRole="ProjectMember" ToRole="Project" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ProjectMember_User" FromRole="ProjectMember" ToRole="User" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -1293,32 +1186,32 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             <PropertyRef Name="CreatedOn" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FatherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Dob" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VoterId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PanCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DrivingLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="CEPMModel.FK_UserProfile_User" FromRole="UserProfile" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserProfile_User" FromRole="UserProfile" ToRole="User" />
         </EntityType>
         <Association Name="FK_CompanyContact_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyContact" Role="CompanyContact" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1329,8 +1222,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyDesignation_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyDesignation" Role="CompanyDesignation" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1341,8 +1234,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyEmployee_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyEmployee" Role="CompanyEmployee" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1353,8 +1246,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyHoliday_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyHoliday" Role="CompanyHoliday" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyHoliday" Type="Self.CompanyHoliday" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1365,8 +1258,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeDevice_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeeDevice" Role="EmployeeDevice" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1377,8 +1270,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeLeave_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeeLeave" Role="EmployeeLeave" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="EmployeeLeave" Type="Self.EmployeeLeave" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1389,8 +1282,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectMember_Company">
-          <End Type="CEPMModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="CEPMModel.ProjectMember" Role="ProjectMember" Multiplicity="*" />
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
               <PropertyRef Name="CompanyId" />
@@ -1401,8 +1294,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyDesignation_CompanyContact">
-          <End Type="CEPMModel.CompanyContact" Role="CompanyContact" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyDesignation" Role="CompanyDesignation" Multiplicity="*" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+          <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyContact">
               <PropertyRef Name="CompanyId" />
@@ -1413,8 +1306,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyDevice_CompanyContact">
-          <End Type="CEPMModel.CompanyContact" Role="CompanyContact" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyDevice" Role="CompanyDevice" Multiplicity="*" />
+          <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+          <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyContact">
               <PropertyRef Name="CompanyId" />
@@ -1425,8 +1318,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyDesignationRole_CompanyDesignation">
-          <End Type="CEPMModel.CompanyDesignation" Role="CompanyDesignation" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyDesignationRole" Role="CompanyDesignationRole" Multiplicity="*" />
+          <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+          <End Role="CompanyDesignationRole" Type="Self.CompanyDesignationRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyDesignation">
               <PropertyRef Name="DesignationId" />
@@ -1437,8 +1330,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyEmployee_CompanyDesignation">
-          <End Type="CEPMModel.CompanyDesignation" Role="CompanyDesignation" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyEmployee" Role="CompanyEmployee" Multiplicity="*" />
+          <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+          <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyDesignation">
               <PropertyRef Name="DesignationId" />
@@ -1449,8 +1342,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeDevice_CompanyDevice">
-          <End Type="CEPMModel.CompanyDevice" Role="CompanyDevice" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeeDevice" Role="EmployeeDevice" Multiplicity="*" />
+          <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="1" />
+          <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CompanyDevice">
               <PropertyRef Name="DeviceId" />
@@ -1461,8 +1354,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeLeave_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeeLeave" Role="EmployeeLeave" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EmployeeLeave" Type="Self.EmployeeLeave" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1473,8 +1366,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PrjectWiki_Project">
-          <End Type="CEPMModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="CEPMModel.PrjectWiki" Role="PrjectWiki" Multiplicity="*" />
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="PrjectWiki" Type="Self.PrjectWiki" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -1485,8 +1378,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectBug_Project">
-          <End Type="CEPMModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="CEPMModel.ProjectBug" Role="ProjectBug" Multiplicity="*" />
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectBug" Type="Self.ProjectBug" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -1497,8 +1390,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectMember_Project">
-          <End Type="CEPMModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="CEPMModel.ProjectMember" Role="ProjectMember" Multiplicity="*" />
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -1509,8 +1402,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectTask_Project">
-          <End Type="CEPMModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="CEPMModel.ProjectTask" Role="ProjectTask" Multiplicity="*" />
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectTask" Type="Self.ProjectTask" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -1521,8 +1414,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CompanyEmployee_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.CompanyEmployee" Role="CompanyEmployee" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1533,8 +1426,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeDevice_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeeDevice" Role="EmployeeDevice" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1545,8 +1438,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeesAttandanceDetail_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.EmployeesAttandanceDetail" Role="EmployeesAttandanceDetail" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EmployeesAttandanceDetail" Type="Self.EmployeesAttandanceDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1557,8 +1450,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProjectMember_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.ProjectMember" Role="ProjectMember" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1569,8 +1462,8 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserProfile_User">
-          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
-          <End Type="CEPMModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -1580,7 +1473,115 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="CEPMEF" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanyContacts" EntityType="Self.CompanyContact" />
+          <EntitySet Name="CompanyDesignations" EntityType="Self.CompanyDesignation" />
+          <EntitySet Name="CompanyDesignationRoles" EntityType="Self.CompanyDesignationRole" />
+          <EntitySet Name="CompanyDevices" EntityType="Self.CompanyDevice" />
+          <EntitySet Name="CompanyHolidays" EntityType="Self.CompanyHoliday" />
+          <EntitySet Name="EmployeeLeaves" EntityType="Self.EmployeeLeave" />
+          <EntitySet Name="PrjectWikis" EntityType="Self.PrjectWiki" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="ProjectBugs" EntityType="Self.ProjectBug" />
+          <EntitySet Name="ProjectTasks" EntityType="Self.ProjectTask" />
+          <EntitySet Name="RefTypes" EntityType="Self.RefType" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="CompanyEmployees" EntityType="Self.CompanyEmployee" />
+          <EntitySet Name="EmployeeDevices" EntityType="Self.EmployeeDevice" />
+          <EntitySet Name="EmployeesAttandanceDetails" EntityType="Self.EmployeesAttandanceDetail" />
+          <EntitySet Name="ProjectMembers" EntityType="Self.ProjectMember" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <AssociationSet Name="FK_CompanyContact_Company" Association="Self.FK_CompanyContact_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyContact" EntitySet="CompanyContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDesignation_Company" Association="Self.FK_CompanyDesignation_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyEmployee_Company" Association="Self.FK_CompanyEmployee_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyHoliday_Company" Association="Self.FK_CompanyHoliday_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyHoliday" EntitySet="CompanyHolidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDevice_Company" Association="Self.FK_EmployeeDevice_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLeave_Company" Association="Self.FK_EmployeeLeave_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMember_Company" Association="Self.FK_ProjectMember_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="ProjectMember" EntitySet="ProjectMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDesignation_CompanyContact" Association="Self.FK_CompanyDesignation_CompanyContact">
+            <End Role="CompanyContact" EntitySet="CompanyContacts" />
+            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDevice_CompanyContact" Association="Self.FK_CompanyDevice_CompanyContact">
+            <End Role="CompanyContact" EntitySet="CompanyContacts" />
+            <End Role="CompanyDevice" EntitySet="CompanyDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyDesignationRole_CompanyDesignation" Association="Self.FK_CompanyDesignationRole_CompanyDesignation">
+            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+            <End Role="CompanyDesignationRole" EntitySet="CompanyDesignationRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyEmployee_CompanyDesignation" Association="Self.FK_CompanyEmployee_CompanyDesignation">
+            <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDevice_CompanyDevice" Association="Self.FK_EmployeeDevice_CompanyDevice">
+            <End Role="CompanyDevice" EntitySet="CompanyDevices" />
+            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLeave_User" Association="Self.FK_EmployeeLeave_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrjectWiki_Project" Association="Self.FK_PrjectWiki_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="PrjectWiki" EntitySet="PrjectWikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectBug_Project" Association="Self.FK_ProjectBug_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectBug" EntitySet="ProjectBugs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMember_Project" Association="Self.FK_ProjectMember_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectMember" EntitySet="ProjectMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectTask_Project" Association="Self.FK_ProjectTask_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectTask" EntitySet="ProjectTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyEmployee_User" Association="Self.FK_CompanyEmployee_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeDevice_User" Association="Self.FK_EmployeeDevice_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="Self.FK_EmployeesAttandanceDetail_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EmployeesAttandanceDetail" EntitySet="EmployeesAttandanceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectMember_User" Association="Self.FK_ProjectMember_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProjectMember" EntitySet="ProjectMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_User" Association="Self.FK_UserProfile_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1589,325 +1590,325 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <EntitySetMapping Name="Companies">
             <EntityTypeMapping TypeName="CEPMModel.Company">
               <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
-                <ScalarProperty Name="TinNumber" ColumnName="TinNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
-                <ScalarProperty Name="EstablishedDate" ColumnName="EstablishedDate" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="EstablishedDate" ColumnName="EstablishedDate" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TinNumber" ColumnName="TinNumber" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyContacts">
             <EntityTypeMapping TypeName="CEPMModel.CompanyContact">
               <MappingFragment StoreEntitySet="CompanyContact">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="TelPhone2" ColumnName="TelPhone2" />
-                <ScalarProperty Name="TelPhone1" ColumnName="TelPhone1" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Addresss" ColumnName="Addresss" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Addresss" ColumnName="Addresss" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelPhone1" ColumnName="TelPhone1" />
+                <ScalarProperty Name="TelPhone2" ColumnName="TelPhone2" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyDesignations">
             <EntityTypeMapping TypeName="CEPMModel.CompanyDesignation">
               <MappingFragment StoreEntitySet="CompanyDesignation">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyDesignationRoles">
             <EntityTypeMapping TypeName="CEPMModel.CompanyDesignationRole">
               <MappingFragment StoreEntitySet="CompanyDesignationRole">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
-                <ScalarProperty Name="isApplied" ColumnName="isApplied" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="isApplied" ColumnName="isApplied" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyDevices">
             <EntityTypeMapping TypeName="CEPMModel.CompanyDevice">
               <MappingFragment StoreEntitySet="CompanyDevice">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyHolidays">
             <EntityTypeMapping TypeName="CEPMModel.CompanyHoliday">
               <MappingFragment StoreEntitySet="CompanyHoliday">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsShifted" ColumnName="IsShifted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
                 <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="HolidayName" ColumnName="HolidayName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsShifted" ColumnName="IsShifted" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmployeeLeaves">
             <EntityTypeMapping TypeName="CEPMModel.EmployeeLeave">
               <MappingFragment StoreEntitySet="EmployeeLeave">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
-                <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
-                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="LeaveId" ColumnName="LeaveId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
+                <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
+                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PrjectWikis">
             <EntityTypeMapping TypeName="CEPMModel.PrjectWiki">
               <MappingFragment StoreEntitySet="PrjectWiki">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ProjectNoteId" ColumnName="ProjectNoteId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectNoteId" ColumnName="ProjectNoteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="CEPMModel.Project">
               <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="budgetHours" ColumnName="budgetHours" />
-                <ScalarProperty Name="EstimateCost" ColumnName="EstimateCost" />
-                <ScalarProperty Name="EstimationDays" ColumnName="EstimationDays" />
-                <ScalarProperty Name="ProjectCost" ColumnName="ProjectCost" />
-                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="ProjectCost" ColumnName="ProjectCost" />
+                <ScalarProperty Name="EstimationDays" ColumnName="EstimationDays" />
+                <ScalarProperty Name="EstimateCost" ColumnName="EstimateCost" />
+                <ScalarProperty Name="budgetHours" ColumnName="budgetHours" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectBugs">
             <EntityTypeMapping TypeName="CEPMModel.ProjectBug">
               <MappingFragment StoreEntitySet="ProjectBug">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsStart" ColumnName="IsStart" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="response" ColumnName="response" />
-                <ScalarProperty Name="Assign" ColumnName="Assign" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ProjectBugId" ColumnName="ProjectBugId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Assign" ColumnName="Assign" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsStart" ColumnName="IsStart" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectTasks">
             <EntityTypeMapping TypeName="CEPMModel.ProjectTask">
               <MappingFragment StoreEntitySet="ProjectTask">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsStart" ColumnName="IsStart" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
-                <ScalarProperty Name="TaskTime" ColumnName="TaskTime" />
-                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ProjectTaskId" ColumnName="ProjectTaskId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="TaskTime" ColumnName="TaskTime" />
+                <ScalarProperty Name="AppliedDate" ColumnName="AppliedDate" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsStart" ColumnName="IsStart" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RefTypes">
             <EntityTypeMapping TypeName="CEPMModel.RefType">
               <MappingFragment StoreEntitySet="RefType">
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="CEPMModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsMobileVerify" ColumnName="IsMobileVerify" />
-                <ScalarProperty Name="IsEmailVerify" ColumnName="IsEmailVerify" />
-                <ScalarProperty Name="Password2" ColumnName="Password2" />
-                <ScalarProperty Name="Password1" ColumnName="Password1" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Password1" ColumnName="Password1" />
+                <ScalarProperty Name="Password2" ColumnName="Password2" />
+                <ScalarProperty Name="IsEmailVerify" ColumnName="IsEmailVerify" />
+                <ScalarProperty Name="IsMobileVerify" ColumnName="IsMobileVerify" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CompanyEmployees">
             <EntityTypeMapping TypeName="CEPMModel.CompanyEmployee">
               <MappingFragment StoreEntitySet="CompanyEmployee">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmployeeDevices">
             <EntityTypeMapping TypeName="CEPMModel.EmployeeDevice">
               <MappingFragment StoreEntitySet="EmployeeDevice">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
-                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmployeesAttandanceDetails">
             <EntityTypeMapping TypeName="CEPMModel.EmployeesAttandanceDetail">
               <MappingFragment StoreEntitySet="EmployeesAttandanceDetail">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="Days" ColumnName="Days" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProjectMembers">
             <EntityTypeMapping TypeName="CEPMModel.ProjectMember">
               <MappingFragment StoreEntitySet="ProjectMember">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
-                <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
-                <ScalarProperty Name="ProjectMemberTypeId" ColumnName="ProjectMemberTypeId" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ProjectMemberTypeId" ColumnName="ProjectMemberTypeId" />
+                <ScalarProperty Name="AssignDate" ColumnName="AssignDate" />
+                <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="CEPMModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfile">
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="DrivingLicense" ColumnName="DrivingLicense" />
-                <ScalarProperty Name="PanCard" ColumnName="PanCard" />
-                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TelPhone" ColumnName="TelPhone" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Dob" ColumnName="Dob" />
-                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="TelPhone" ColumnName="TelPhone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="PanCard" ColumnName="PanCard" />
+                <ScalarProperty Name="DrivingLicense" ColumnName="DrivingLicense" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

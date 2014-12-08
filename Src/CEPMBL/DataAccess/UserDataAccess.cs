@@ -14,7 +14,8 @@ namespace CEPMBL.DataAccess
 
         public string GetUserLoginId(string userName, string password )
         {
-            return DataContext.Users.Where(l => l.UserName == userName && l.Password == password).Select(l => l.Id).FirstOrDefault().ToString();
+            var lstUsers = DataContext.Users.Where(l => l.UserName == userName && l.Password == password).ToList();
+            return lstUsers.Select(l => l.Id).FirstOrDefault().ToString();
         }
     }
 }
