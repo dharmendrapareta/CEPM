@@ -1,0 +1,10 @@
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\CEPMDL.dll.config
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\CEPMDL.dll
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\CEPMDL.pdb
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\EntityFramework.dll
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\EntityFramework.SqlServer.dll
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\EntityFramework.xml
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\bin\Release\EntityFramework.SqlServer.xml
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\obj\Release\CEPMDL.dll
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\obj\Release\CEPMDL.pdb
+c:\Users\DPareta\documents\visual studio 2012\Projects\CEPM\CEPMDL\obj\Release\CEPMDL.csprojResolveAssemblyReference.cache

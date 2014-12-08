@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CEPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EstablishedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TinNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyContact_Company" FromRole="Company" ToRole="CompanyContact" />
+    <NavigationProperty Name="CompanyDesignations" Relationship="Self.FK_CompanyDesignation_Company" FromRole="Company" ToRole="CompanyDesignation" />
+    <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_Company" FromRole="Company" ToRole="CompanyEmployee" />
+    <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_Company" FromRole="Company" ToRole="EmployeeDevice" />
+    <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_Company" FromRole="Company" ToRole="ProjectMember" />
+  </EntityType>
+  <EntityType Name="CompanyContact">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="Addresss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TelPhone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TelPhone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyContact_Company" FromRole="CompanyContact" ToRole="Company" />
+    <NavigationProperty Name="CompanyDesignations" Relationship="Self.FK_CompanyDesignation_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDesignation" />
+    <NavigationProperty Name="CompanyDevices" Relationship="Self.FK_CompanyDevice_CompanyContact" FromRole="CompanyContact" ToRole="CompanyDevice" />
+  </EntityType>
+  <EntityType Name="CompanyDesignation">
+    <Key>
+      <PropertyRef Name="DesignationId" />
+    </Key>
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyDesignation_Company" FromRole="CompanyDesignation" ToRole="Company" />
+    <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyDesignation_CompanyContact" FromRole="CompanyDesignation" ToRole="CompanyContact" />
+    <NavigationProperty Name="CompanyDesignationRoles" Relationship="Self.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyDesignationRole" />
+    <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyDesignation" ToRole="CompanyEmployee" />
+  </EntityType>
+  <EntityType Name="CompanyDesignationRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isApplied" Type="Boolean" Nullable="false" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CompanyDesignation" Relationship="Self.FK_CompanyDesignationRole_CompanyDesignation" FromRole="CompanyDesignationRole" ToRole="CompanyDesignation" />
+  </EntityType>
+  <EntityType Name="CompanyDevice">
+    <Key>
+      <PropertyRef Name="DeviceId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="DeviceId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TerminationDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompanyContact" Relationship="Self.FK_CompanyDevice_CompanyContact" FromRole="CompanyDevice" ToRole="CompanyContact" />
+    <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_CompanyDevice" FromRole="CompanyDevice" ToRole="EmployeeDevice" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="LeaveId" />
+    </Key>
+    <Property Name="LeaveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsAllow" Type="Boolean" Nullable="false" />
+    <Property Name="IsFull" Type="Boolean" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="HolidayId" />
+    </Key>
+    <Property Name="HolidayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="HolidayName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsShifted" Type="Boolean" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PrjectWiki">
+    <Key>
+      <PropertyRef Name="ProjectNoteId" />
+    </Key>
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectNoteId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_PrjectWiki_Project" FromRole="PrjectWiki" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsComplete" Type="Boolean" Nullable="false" />
+    <Property Name="ProjectCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EstimationDays" Type="Int32" />
+    <Property Name="EstimateCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="budgetHours" Type="Int32" />
+    <NavigationProperty Name="PrjectWikis" Relationship="Self.FK_PrjectWiki_Project" FromRole="Project" ToRole="PrjectWiki" />
+    <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_Project" FromRole="Project" ToRole="ProjectMember" />
+  </EntityType>
+  <EntityType Name="ProjectBug">
+    <Key>
+      <PropertyRef Name="ProjectBugId" />
+    </Key>
+    <Property Name="ProjectBugId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Assign" Type="Int32" Nullable="false" />
+    <Property Name="response" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsStart" Type="Boolean" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProjectTask">
+    <Key>
+      <PropertyRef Name="ProjectTaskId" />
+    </Key>
+    <Property Name="ProjectTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="TaskTime" Type="Int32" Nullable="false" />
+    <Property Name="AppliedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="IsStart" Type="Boolean" Nullable="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RefType">
+    <Key>
+      <PropertyRef Name="RefId" />
+    </Key>
+    <Property Name="RefId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsEmailVerify" Type="Boolean" Nullable="false" />
+    <Property Name="IsMobileVerify" Type="Boolean" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LoginAttempt" Type="Int32" Nullable="false" />
+    <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_User" FromRole="User" ToRole="CompanyEmployee" />
+    <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_User" FromRole="User" ToRole="EmployeeDevice" />
+    <NavigationProperty Name="EmployeesAttandanceDetails" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="User" ToRole="EmployeesAttandanceDetail" />
+    <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_User" FromRole="User" ToRole="ProjectMember" />
+    <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
+  </EntityType>
+  <EntityType Name="CompanyEmployee">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="DesignationId" />
+      <PropertyRef Name="IsAdmin" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_CompanyEmployee_Company" FromRole="CompanyEmployee" ToRole="Company" />
+    <NavigationProperty Name="CompanyDesignation" Relationship="Self.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyEmployee" ToRole="CompanyDesignation" />
+    <NavigationProperty Name="User" Relationship="Self.FK_CompanyEmployee_User" FromRole="CompanyEmployee" ToRole="User" />
+  </EntityType>
+  <EntityType Name="EmployeeDevice">
+    <Key>
+      <PropertyRef Name="DeviceId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="IssueDate" />
+    </Key>
+    <Property Name="DeviceId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SubmitDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_EmployeeDevice_Company" FromRole="EmployeeDevice" ToRole="Company" />
+    <NavigationProperty Name="CompanyDevice" Relationship="Self.FK_EmployeeDevice_CompanyDevice" FromRole="EmployeeDevice" ToRole="CompanyDevice" />
+    <NavigationProperty Name="User" Relationship="Self.FK_EmployeeDevice_User" FromRole="EmployeeDevice" ToRole="User" />
+  </EntityType>
+  <EntityType Name="EmployeesAttandanceDetail">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="Year" />
+      <PropertyRef Name="Month" />
+      <PropertyRef Name="Days" />
+      <PropertyRef Name="StartTime" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="Days" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="TotalTime" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="EmployeesAttandanceDetail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ProjectMember">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="ProjectMemberTypeId" />
+      <PropertyRef Name="AssignDate" />
+    </Key>
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectMemberTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AssignDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LeaveDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_ProjectMember_Company" FromRole="ProjectMember" ToRole="Company" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectMember_Project" FromRole="ProjectMember" ToRole="Project" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ProjectMember_User" FromRole="ProjectMember" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FatherName" />
+      <PropertyRef Name="Dob" />
+      <PropertyRef Name="Mobile" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dob" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VoterId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PanCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DrivingLicense" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserProfile_User" FromRole="UserProfile" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_CompanyContact_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignation_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDesignation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignation_CompanyContact">
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDesignation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDevice_CompanyContact">
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+    <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDevice">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignationRole_CompanyDesignation">
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+    <End Role="CompanyDesignationRole" Type="Self.CompanyDesignationRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="CompanyDesignationRole">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_CompanyDesignation">
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_CompanyDevice">
+    <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDevice">
+        <PropertyRef Name="DeviceId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrjectWiki_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="PrjectWiki" Type="Self.PrjectWiki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="PrjectWiki">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeesAttandanceDetail_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EmployeesAttandanceDetail" Type="Self.EmployeesAttandanceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmployeesAttandanceDetail">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProfile_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CEPMEF" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="CompanyContacts" EntityType="Self.CompanyContact" />
+    <EntitySet Name="CompanyDesignations" EntityType="Self.CompanyDesignation" />
+    <EntitySet Name="CompanyDesignationRoles" EntityType="Self.CompanyDesignationRole" />
+    <EntitySet Name="CompanyDevices" EntityType="Self.CompanyDevice" />
+    <EntitySet Name="EmployeeLeaves" EntityType="Self.EmployeeLeave" />
+    <EntitySet Name="Holidays" EntityType="Self.Holiday" />
+    <EntitySet Name="PrjectWikis" EntityType="Self.PrjectWiki" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="ProjectBugs" EntityType="Self.ProjectBug" />
+    <EntitySet Name="ProjectTasks" EntityType="Self.ProjectTask" />
+    <EntitySet Name="RefTypes" EntityType="Self.RefType" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="CompanyEmployees" EntityType="Self.CompanyEmployee" />
+    <EntitySet Name="EmployeeDevices" EntityType="Self.EmployeeDevice" />
+    <EntitySet Name="EmployeesAttandanceDetails" EntityType="Self.EmployeesAttandanceDetail" />
+    <EntitySet Name="ProjectMembers" EntityType="Self.ProjectMember" />
+    <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+    <AssociationSet Name="FK_CompanyContact_Company" Association="Self.FK_CompanyContact_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyContact" EntitySet="CompanyContacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignation_Company" Association="Self.FK_CompanyDesignation_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_Company" Association="Self.FK_CompanyEmployee_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_Company" Association="Self.FK_EmployeeDevice_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_Company" Association="Self.FK_ProjectMember_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="ProjectMember" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignation_CompanyContact" Association="Self.FK_CompanyDesignation_CompanyContact">
+      <End Role="CompanyContact" EntitySet="CompanyContacts" />
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDevice_CompanyContact" Association="Self.FK_CompanyDevice_CompanyContact">
+      <End Role="CompanyContact" EntitySet="CompanyContacts" />
+      <End Role="CompanyDevice" EntitySet="CompanyDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignationRole_CompanyDesignation" Association="Self.FK_CompanyDesignationRole_CompanyDesignation">
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+      <End Role="CompanyDesignationRole" EntitySet="CompanyDesignationRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_CompanyDesignation" Association="Self.FK_CompanyEmployee_CompanyDesignation">
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignations" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_CompanyDevice" Association="Self.FK_EmployeeDevice_CompanyDevice">
+      <End Role="CompanyDevice" EntitySet="CompanyDevices" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrjectWiki_Project" Association="Self.FK_PrjectWiki_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="PrjectWiki" EntitySet="PrjectWikis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_Project" Association="Self.FK_ProjectMember_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectMember" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_User" Association="Self.FK_CompanyEmployee_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_User" Association="Self.FK_EmployeeDevice_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="Self.FK_EmployeesAttandanceDetail_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="EmployeesAttandanceDetail" EntitySet="EmployeesAttandanceDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_User" Association="Self.FK_ProjectMember_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ProjectMember" EntitySet="ProjectMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProfile_User" Association="Self.FK_UserProfile_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

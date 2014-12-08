@@ -1,0 +1,809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CEPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EstablishedDate" Type="datetime" Nullable="false" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="TinNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegistrationNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyContact">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="Addresss" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TelPhone1" Type="nvarchar" MaxLength="50" />
+    <Property Name="TelPhone2" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyDesignation">
+    <Key>
+      <PropertyRef Name="DesignationId" />
+    </Key>
+    <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyDesignationRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="isApplied" Type="bit" Nullable="false" />
+    <Property Name="DesignationId" Type="int" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyDevice">
+    <Key>
+      <PropertyRef Name="DeviceId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="DeviceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModelNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurchaseDate" Type="datetime" Nullable="false" />
+    <Property Name="TerminationDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CEPM.dbo.CompanyEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CompanyEmployee">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="DesignationId" />
+      <PropertyRef Name="IsAdmin" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+    </Key>
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="DesignationId" Type="int" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyHoliday">
+    <Key>
+      <PropertyRef Name="HolidayId" />
+    </Key>
+    <Property Name="HolidayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="HolidayName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Comments" Type="varchar" MaxLength="250" />
+    <Property Name="AppliedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsShifted" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CEPM.dbo.EmployeeDevice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmployeeDevice">
+    <Key>
+      <PropertyRef Name="DeviceId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="IssueDate" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+    </Key>
+    <Property Name="DeviceId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="IssueDate" Type="datetime" Nullable="false" />
+    <Property Name="SubmitDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="LeaveId" />
+    </Key>
+    <Property Name="LeaveId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="Reason" Type="varchar" MaxLength="100" />
+    <Property Name="AppliedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsAllow" Type="bit" Nullable="false" />
+    <Property Name="IsFull" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CEPM.dbo.EmployeesAttandanceDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmployeesAttandanceDetail">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="Year" />
+      <PropertyRef Name="Month" />
+      <PropertyRef Name="Days" />
+      <PropertyRef Name="StartTime" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="Days" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="TotalTime" Type="int" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrjectWiki">
+    <Key>
+      <PropertyRef Name="ProjectNoteId" />
+    </Key>
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="ProjectNoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Website" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsComplete" Type="bit" Nullable="false" />
+    <Property Name="ProjectCost" Type="money" />
+    <Property Name="EstimationDays" Type="int" />
+    <Property Name="EstimateCost" Type="money" />
+    <Property Name="budgetHours" Type="int" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectBug">
+    <Key>
+      <PropertyRef Name="ProjectBugId" />
+    </Key>
+    <Property Name="ProjectBugId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="Assign" Type="int" Nullable="false" />
+    <Property Name="response" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="AppliedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="IsStart" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CEPM.dbo.ProjectMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProjectMember">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="EmployeeId" />
+      <PropertyRef Name="CompanyId" />
+      <PropertyRef Name="ProjectMemberTypeId" />
+      <PropertyRef Name="AssignDate" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+    </Key>
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="ProjectMemberTypeId" Type="int" Nullable="false" />
+    <Property Name="AssignDate" Type="datetime" Nullable="false" />
+    <Property Name="LeaveDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTask">
+    <Key>
+      <PropertyRef Name="ProjectTaskId" />
+    </Key>
+    <Property Name="ProjectTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="TaskTime" Type="int" Nullable="false" />
+    <Property Name="AppliedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="IsStart" Type="bit" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RefType">
+    <Key>
+      <PropertyRef Name="RefId" />
+    </Key>
+    <Property Name="RefId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsEmailVerify" Type="bit" Nullable="false" />
+    <Property Name="IsMobileVerify" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LoginAttempt" Type="int" Nullable="false" />
+    <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FatherName" />
+      <PropertyRef Name="Dob" />
+      <PropertyRef Name="Mobile" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MotherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dob" Type="datetime" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TelPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="VoterId" Type="nvarchar" MaxLength="50" />
+    <Property Name="PanCard" Type="nvarchar" MaxLength="50" />
+    <Property Name="DrivingLicense" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CompanyContact_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignation_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDesignation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignation_CompanyContact">
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDesignation">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDesignationRole_CompanyDesignation">
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+    <End Role="CompanyDesignationRole" Type="Self.CompanyDesignationRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="CompanyDesignationRole">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyDevice_CompanyContact">
+    <End Role="CompanyContact" Type="Self.CompanyContact" Multiplicity="1" />
+    <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyContact">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyDevice">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_CompanyDesignation">
+    <End Role="CompanyDesignation" Type="Self.CompanyDesignation" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDesignation">
+        <PropertyRef Name="DesignationId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="DesignationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyEmployee_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="CompanyEmployee">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyHoliday_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="CompanyHoliday" Type="Self.CompanyHoliday" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="CompanyHoliday">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_CompanyDevice">
+    <End Role="CompanyDevice" Type="Self.CompanyDevice" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyDevice">
+        <PropertyRef Name="DeviceId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeDevice_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmployeeDevice">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLeave_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="EmployeeLeave" Type="Self.EmployeeLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="EmployeeLeave">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeLeave_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EmployeeLeave" Type="Self.EmployeeLeave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmployeeLeave">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeesAttandanceDetail_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="EmployeesAttandanceDetail" Type="Self.EmployeesAttandanceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EmployeesAttandanceDetail">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrjectWiki_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="PrjectWiki" Type="Self.PrjectWiki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="PrjectWiki">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectBug_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectBug" Type="Self.ProjectBug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="ProjectBug">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectMember_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="ProjectMember">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectTask_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="ProjectTask" Type="Self.ProjectTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectId" />
+      </Principal>
+      <Dependent Role="ProjectTask">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProfile_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CEPMModelStoreContainer">
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyContact" EntityType="Self.CompanyContact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyDesignation" EntityType="Self.CompanyDesignation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyDesignationRole" EntityType="Self.CompanyDesignationRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyDevice" EntityType="Self.CompanyDevice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyHoliday" EntityType="Self.CompanyHoliday" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLeave" EntityType="Self.EmployeeLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrjectWiki" EntityType="Self.PrjectWiki" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectBug" EntityType="Self.ProjectBug" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectTask" EntityType="Self.ProjectTask" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefType" EntityType="Self.RefType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyEmployee" EntityType="Self.CompanyEmployee" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CompanyEmployee].[CompanyId] AS [CompanyId], 
+    [CompanyEmployee].[UserId] AS [UserId], 
+    [CompanyEmployee].[DesignationId] AS [DesignationId], 
+    [CompanyEmployee].[IsAdmin] AS [IsAdmin], 
+    [CompanyEmployee].[ModifiedBy] AS [ModifiedBy], 
+    [CompanyEmployee].[ModifiedOn] AS [ModifiedOn], 
+    [CompanyEmployee].[CreatedBy] AS [CreatedBy], 
+    [CompanyEmployee].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[CompanyEmployee] AS [CompanyEmployee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EmployeeDevice" EntityType="Self.EmployeeDevice" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmployeeDevice].[DeviceId] AS [DeviceId], 
+    [EmployeeDevice].[EmployeeId] AS [EmployeeId], 
+    [EmployeeDevice].[CompanyId] AS [CompanyId], 
+    [EmployeeDevice].[IssueDate] AS [IssueDate], 
+    [EmployeeDevice].[SubmitDate] AS [SubmitDate], 
+    [EmployeeDevice].[ModifiedBy] AS [ModifiedBy], 
+    [EmployeeDevice].[ModifiedOn] AS [ModifiedOn], 
+    [EmployeeDevice].[CreatedBy] AS [CreatedBy], 
+    [EmployeeDevice].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[EmployeeDevice] AS [EmployeeDevice]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EmployeesAttandanceDetail" EntityType="Self.EmployeesAttandanceDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmployeesAttandanceDetail].[EmployeeId] AS [EmployeeId], 
+    [EmployeesAttandanceDetail].[Year] AS [Year], 
+    [EmployeesAttandanceDetail].[Month] AS [Month], 
+    [EmployeesAttandanceDetail].[Days] AS [Days], 
+    [EmployeesAttandanceDetail].[StartTime] AS [StartTime], 
+    [EmployeesAttandanceDetail].[EndTime] AS [EndTime], 
+    [EmployeesAttandanceDetail].[TotalTime] AS [TotalTime], 
+    [EmployeesAttandanceDetail].[ModifiedBy] AS [ModifiedBy], 
+    [EmployeesAttandanceDetail].[ModifiedOn] AS [ModifiedOn], 
+    [EmployeesAttandanceDetail].[CreatedBy] AS [CreatedBy], 
+    [EmployeesAttandanceDetail].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[EmployeesAttandanceDetail] AS [EmployeesAttandanceDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProjectMember" EntityType="Self.ProjectMember" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProjectMember].[ProjectId] AS [ProjectId], 
+    [ProjectMember].[EmployeeId] AS [EmployeeId], 
+    [ProjectMember].[CompanyId] AS [CompanyId], 
+    [ProjectMember].[ProjectMemberTypeId] AS [ProjectMemberTypeId], 
+    [ProjectMember].[AssignDate] AS [AssignDate], 
+    [ProjectMember].[LeaveDate] AS [LeaveDate], 
+    [ProjectMember].[ModifiedBy] AS [ModifiedBy], 
+    [ProjectMember].[ModifiedOn] AS [ModifiedOn], 
+    [ProjectMember].[CreatedBy] AS [CreatedBy], 
+    [ProjectMember].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[ProjectMember] AS [ProjectMember]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserProfile].[UserId] AS [UserId], 
+    [UserProfile].[FirstName] AS [FirstName], 
+    [UserProfile].[LastName] AS [LastName], 
+    [UserProfile].[MiddleName] AS [MiddleName], 
+    [UserProfile].[FatherName] AS [FatherName], 
+    [UserProfile].[MotherName] AS [MotherName], 
+    [UserProfile].[Dob] AS [Dob], 
+    [UserProfile].[Mobile] AS [Mobile], 
+    [UserProfile].[TelPhone] AS [TelPhone], 
+    [UserProfile].[Email] AS [Email], 
+    [UserProfile].[VoterId] AS [VoterId], 
+    [UserProfile].[PanCard] AS [PanCard], 
+    [UserProfile].[DrivingLicense] AS [DrivingLicense], 
+    [UserProfile].[Address] AS [Address], 
+    [UserProfile].[City] AS [City], 
+    [UserProfile].[State] AS [State], 
+    [UserProfile].[Country] AS [Country], 
+    [UserProfile].[PinCode] AS [PinCode], 
+    [UserProfile].[ModifiedBy] AS [ModifiedBy], 
+    [UserProfile].[ModifiedOn] AS [ModifiedOn], 
+    [UserProfile].[CreatedBy] AS [CreatedBy], 
+    [UserProfile].[CreatedOn] AS [CreatedOn]
+    FROM [dbo].[UserProfile] AS [UserProfile]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_CompanyContact_Company" Association="Self.FK_CompanyContact_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyContact" EntitySet="CompanyContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignation_Company" Association="Self.FK_CompanyDesignation_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignation_CompanyContact" Association="Self.FK_CompanyDesignation_CompanyContact">
+      <End Role="CompanyContact" EntitySet="CompanyContact" />
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDesignationRole_CompanyDesignation" Association="Self.FK_CompanyDesignationRole_CompanyDesignation">
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignation" />
+      <End Role="CompanyDesignationRole" EntitySet="CompanyDesignationRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyDevice_CompanyContact" Association="Self.FK_CompanyDevice_CompanyContact">
+      <End Role="CompanyContact" EntitySet="CompanyContact" />
+      <End Role="CompanyDevice" EntitySet="CompanyDevice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_Company" Association="Self.FK_CompanyEmployee_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_CompanyDesignation" Association="Self.FK_CompanyEmployee_CompanyDesignation">
+      <End Role="CompanyDesignation" EntitySet="CompanyDesignation" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyEmployee_User" Association="Self.FK_CompanyEmployee_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="CompanyEmployee" EntitySet="CompanyEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyHoliday_Company" Association="Self.FK_CompanyHoliday_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyHoliday" EntitySet="CompanyHoliday" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_Company" Association="Self.FK_EmployeeDevice_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_CompanyDevice" Association="Self.FK_EmployeeDevice_CompanyDevice">
+      <End Role="CompanyDevice" EntitySet="CompanyDevice" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeDevice_User" Association="Self.FK_EmployeeDevice_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="EmployeeDevice" EntitySet="EmployeeDevice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLeave_Company" Association="Self.FK_EmployeeLeave_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="EmployeeLeave" EntitySet="EmployeeLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeLeave_User" Association="Self.FK_EmployeeLeave_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="EmployeeLeave" EntitySet="EmployeeLeave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="Self.FK_EmployeesAttandanceDetail_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="EmployeesAttandanceDetail" EntitySet="EmployeesAttandanceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrjectWiki_Project" Association="Self.FK_PrjectWiki_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="PrjectWiki" EntitySet="PrjectWiki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectBug_Project" Association="Self.FK_ProjectBug_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectBug" EntitySet="ProjectBug" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_Company" Association="Self.FK_ProjectMember_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="ProjectMember" EntitySet="ProjectMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_Project" Association="Self.FK_ProjectMember_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectMember" EntitySet="ProjectMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectMember_User" Association="Self.FK_ProjectMember_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ProjectMember" EntitySet="ProjectMember" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectTask_Project" Association="Self.FK_ProjectTask_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectTask" EntitySet="ProjectTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProfile_User" Association="Self.FK_UserProfile_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserProfile" EntitySet="UserProfile" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
