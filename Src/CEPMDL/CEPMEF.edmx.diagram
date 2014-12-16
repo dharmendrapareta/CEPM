@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="CEPMModel.ProjectBug" Width="1.5" PointX="8" PointY="36.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CEPMModel.ProjectTask" Width="1.5" PointX="8" PointY="40.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CEPMModel.RefType" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="CEPMModel.User" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CEPMModel.CompanyEmployee" Width="1.5" PointX="10.5" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CEPMModel.EmployeeDevice" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CEPMModel.EmployeesAttandanceDetail" Width="1.5" PointX="8" PointY="2.5" IsExpanded="true" />
@@ -35,17 +34,18 @@
         <AssociationConnector Association="CEPMModel.FK_CompanyDesignationRole_CompanyDesignation" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_CompanyEmployee_CompanyDesignation" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_EmployeeDevice_CompanyDevice" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_EmployeeLeave_User" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_PrjectWiki_Project" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_ProjectBug_Project" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_ProjectMember_Project" ManuallyRouted="false" />
         <AssociationConnector Association="CEPMModel.FK_ProjectTask_Project" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_CompanyEmployee_User" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_EmployeeDevice_User" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_EmployeesAttandanceDetail_User" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_ProjectMember_User" ManuallyRouted="false" />
-        <AssociationConnector Association="CEPMModel.FK_UserProfile_User" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="CEPMModel.User" Width="1.5" PointX="0.75" PointY="8.125" />
+        <AssociationConnector Association="CEPMModel.FK_EmployeeLeave_User" />
+        <AssociationConnector Association="CEPMModel.FK_CompanyEmployee_User" />
+        <AssociationConnector Association="CEPMModel.FK_EmployeeDevice_User" />
+        <AssociationConnector Association="CEPMModel.FK_EmployeesAttandanceDetail_User" />
+        <AssociationConnector Association="CEPMModel.FK_ProjectMember_User" />
+        <AssociationConnector Association="CEPMModel.FK_UserProfile_User" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CEPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CEPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -311,8 +311,8 @@ warning 6002: The table/view 'CEPM.dbo.ProjectMember' does not have a primary ke
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Mobile" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password1" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password2" Type="nvarchar" MaxLength="50" />
           <Property Name="IsEmailVerify" Type="bit" Nullable="false" />
           <Property Name="IsMobileVerify" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -811,8 +811,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             <End Role="UserProfile" EntitySet="UserProfile" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CEPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -947,7 +946,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_EmployeeLeave_Company" FromRole="EmployeeLeave" ToRole="Company" />
-          <NavigationProperty Name="User" Relationship="Self.FK_EmployeeLeave_User" FromRole="EmployeeLeave" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeeLeave_User" FromRole="EmployeeLeave" ToRole="User" />
         </EntityType>
         <EntityType Name="PrjectWiki">
           <Key>
@@ -1043,34 +1042,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsEmailVerify" Type="Boolean" Nullable="false" />
-          <Property Name="IsMobileVerify" Type="Boolean" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LoginAttempt" Type="Int32" Nullable="false" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EmployeeLeaves" Relationship="Self.FK_EmployeeLeave_User" FromRole="User" ToRole="EmployeeLeave" />
-          <NavigationProperty Name="CompanyEmployees" Relationship="Self.FK_CompanyEmployee_User" FromRole="User" ToRole="CompanyEmployee" />
-          <NavigationProperty Name="EmployeeDevices" Relationship="Self.FK_EmployeeDevice_User" FromRole="User" ToRole="EmployeeDevice" />
-          <NavigationProperty Name="EmployeesAttandanceDetails" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="User" ToRole="EmployeesAttandanceDetail" />
-          <NavigationProperty Name="ProjectMembers" Relationship="Self.FK_ProjectMember_User" FromRole="User" ToRole="ProjectMember" />
-          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
-        </EntityType>
         <EntityType Name="CompanyEmployee">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -1092,7 +1063,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_CompanyEmployee_Company" FromRole="CompanyEmployee" ToRole="Company" />
           <NavigationProperty Name="CompanyDesignation" Relationship="Self.FK_CompanyEmployee_CompanyDesignation" FromRole="CompanyEmployee" ToRole="CompanyDesignation" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CompanyEmployee_User" FromRole="CompanyEmployee" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_CompanyEmployee_User" FromRole="CompanyEmployee" ToRole="User" />
         </EntityType>
         <EntityType Name="EmployeeDevice">
           <Key>
@@ -1116,7 +1087,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_EmployeeDevice_Company" FromRole="EmployeeDevice" ToRole="Company" />
           <NavigationProperty Name="CompanyDevice" Relationship="Self.FK_EmployeeDevice_CompanyDevice" FromRole="EmployeeDevice" ToRole="CompanyDevice" />
-          <NavigationProperty Name="User" Relationship="Self.FK_EmployeeDevice_User" FromRole="EmployeeDevice" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeeDevice_User" FromRole="EmployeeDevice" ToRole="User" />
         </EntityType>
         <EntityType Name="EmployeesAttandanceDetail">
           <Key>
@@ -1141,7 +1112,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_EmployeesAttandanceDetail_User" FromRole="EmployeesAttandanceDetail" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_EmployeesAttandanceDetail_User" FromRole="EmployeesAttandanceDetail" ToRole="User" />
         </EntityType>
         <EntityType Name="ProjectMember">
           <Key>
@@ -1167,7 +1138,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Company" Relationship="Self.FK_ProjectMember_Company" FromRole="ProjectMember" ToRole="Company" />
           <NavigationProperty Name="Project" Relationship="Self.FK_ProjectMember_Project" FromRole="ProjectMember" ToRole="Project" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ProjectMember_User" FromRole="ProjectMember" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_ProjectMember_User" FromRole="ProjectMember" ToRole="User" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -1207,7 +1178,7 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserProfile_User" FromRole="UserProfile" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="CEPMModel.FK_UserProfile_User" FromRole="UserProfile" ToRole="User" />
         </EntityType>
         <Association Name="FK_CompanyContact_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="1" />
@@ -1353,18 +1324,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EmployeeLeave_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="EmployeeLeave" Type="Self.EmployeeLeave" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="EmployeeLeave">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PrjectWiki_Project">
           <End Role="Project" Type="Self.Project" Multiplicity="1" />
           <End Role="PrjectWiki" Type="Self.PrjectWiki" Multiplicity="*" />
@@ -1413,66 +1372,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CompanyEmployee_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="CompanyEmployee" Type="Self.CompanyEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="CompanyEmployee">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeeDevice_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="EmployeeDevice" Type="Self.EmployeeDevice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="EmployeeDevice">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EmployeesAttandanceDetail_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="EmployeesAttandanceDetail" Type="Self.EmployeesAttandanceDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="EmployeesAttandanceDetail">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProjectMember_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="ProjectMember" Type="Self.ProjectMember" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="ProjectMember">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfile_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserProfile">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CEPMEF" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="CompanyContacts" EntityType="Self.CompanyContact" />
@@ -1486,7 +1385,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
           <EntitySet Name="ProjectBugs" EntityType="Self.ProjectBug" />
           <EntitySet Name="ProjectTasks" EntityType="Self.ProjectTask" />
           <EntitySet Name="RefTypes" EntityType="Self.RefType" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="CompanyEmployees" EntityType="Self.CompanyEmployee" />
           <EntitySet Name="EmployeeDevices" EntityType="Self.EmployeeDevice" />
           <EntitySet Name="EmployeesAttandanceDetails" EntityType="Self.EmployeesAttandanceDetail" />
@@ -1540,10 +1438,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             <End Role="CompanyDevice" EntitySet="CompanyDevices" />
             <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmployeeLeave_User" Association="Self.FK_EmployeeLeave_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
-          </AssociationSet>
           <AssociationSet Name="FK_PrjectWiki_Project" Association="Self.FK_PrjectWiki_Project">
             <End Role="Project" EntitySet="Projects" />
             <End Role="PrjectWiki" EntitySet="PrjectWikis" />
@@ -1560,27 +1454,132 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
             <End Role="Project" EntitySet="Projects" />
             <End Role="ProjectTask" EntitySet="ProjectTasks" />
           </AssociationSet>
-          <AssociationSet Name="FK_CompanyEmployee_User" Association="Self.FK_CompanyEmployee_User">
+          <EntitySet Name="Users" EntityType="CEPMModel.User" />
+          <AssociationSet Name="FK_EmployeeLeave_User" Association="CEPMModel.FK_EmployeeLeave_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="EmployeeLeave" EntitySet="EmployeeLeaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyEmployee_User" Association="CEPMModel.FK_CompanyEmployee_User">
             <End Role="User" EntitySet="Users" />
             <End Role="CompanyEmployee" EntitySet="CompanyEmployees" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmployeeDevice_User" Association="Self.FK_EmployeeDevice_User">
+          <AssociationSet Name="FK_EmployeeDevice_User" Association="CEPMModel.FK_EmployeeDevice_User">
             <End Role="User" EntitySet="Users" />
             <End Role="EmployeeDevice" EntitySet="EmployeeDevices" />
           </AssociationSet>
-          <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="Self.FK_EmployeesAttandanceDetail_User">
+          <AssociationSet Name="FK_EmployeesAttandanceDetail_User" Association="CEPMModel.FK_EmployeesAttandanceDetail_User">
             <End Role="User" EntitySet="Users" />
             <End Role="EmployeesAttandanceDetail" EntitySet="EmployeesAttandanceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProjectMember_User" Association="Self.FK_ProjectMember_User">
+          <AssociationSet Name="FK_ProjectMember_User" Association="CEPMModel.FK_ProjectMember_User">
             <End Role="User" EntitySet="Users" />
             <End Role="ProjectMember" EntitySet="ProjectMembers" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserProfile_User" Association="Self.FK_UserProfile_User">
+          <AssociationSet Name="FK_UserProfile_User" Association="CEPMModel.FK_UserProfile_User">
             <End Role="User" EntitySet="Users" />
             <End Role="UserProfile" EntitySet="UserProfiles" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsEmailVerify" Type="Boolean" Nullable="false" />
+          <Property Name="IsMobileVerify" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LoginAttempt" Type="Int32" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EmployeeLeaves" Relationship="CEPMModel.FK_EmployeeLeave_User" FromRole="User" ToRole="EmployeeLeave" />
+          <NavigationProperty Name="CompanyEmployees" Relationship="CEPMModel.FK_CompanyEmployee_User" FromRole="User" ToRole="CompanyEmployee" />
+          <NavigationProperty Name="EmployeeDevices" Relationship="CEPMModel.FK_EmployeeDevice_User" FromRole="User" ToRole="EmployeeDevice" />
+          <NavigationProperty Name="EmployeesAttandanceDetails" Relationship="CEPMModel.FK_EmployeesAttandanceDetail_User" FromRole="User" ToRole="EmployeesAttandanceDetail" />
+          <NavigationProperty Name="ProjectMembers" Relationship="CEPMModel.FK_ProjectMember_User" FromRole="User" ToRole="ProjectMember" />
+          <NavigationProperty Name="UserProfiles" Relationship="CEPMModel.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_EmployeeLeave_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.EmployeeLeave" Role="EmployeeLeave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EmployeeLeave">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyEmployee_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.CompanyEmployee" Role="CompanyEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CompanyEmployee">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeDevice_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.EmployeeDevice" Role="EmployeeDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EmployeeDevice">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeesAttandanceDetail_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.EmployeesAttandanceDetail" Role="EmployeesAttandanceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EmployeesAttandanceDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectMember_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.ProjectMember" Role="ProjectMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectMember">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_User">
+          <End Type="CEPMModel.User" Role="User" Multiplicity="1" />
+          <End Type="CEPMModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1799,29 +1798,6 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CEPMModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Password1" ColumnName="Password1" />
-                <ScalarProperty Name="Password2" ColumnName="Password2" />
-                <ScalarProperty Name="IsEmailVerify" ColumnName="IsEmailVerify" />
-                <ScalarProperty Name="IsMobileVerify" ColumnName="IsMobileVerify" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CompanyEmployees">
             <EntityTypeMapping TypeName="CEPMModel.CompanyEmployee">
               <MappingFragment StoreEntitySet="CompanyEmployee">
@@ -1909,6 +1885,29 @@ warning 6002: The table/view 'CEPM.dbo.UserProfile' does not have a primary key 
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CEPMModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LoginAttempt" ColumnName="LoginAttempt" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsMobileVerify" ColumnName="IsMobileVerify" />
+                <ScalarProperty Name="IsEmailVerify" ColumnName="IsEmailVerify" />
+                <ScalarProperty Name="Password2" ColumnName="Password2" />
+                <ScalarProperty Name="Password1" ColumnName="Password1" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

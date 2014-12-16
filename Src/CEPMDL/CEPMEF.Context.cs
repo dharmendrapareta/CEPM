@@ -37,11 +37,11 @@ namespace CEPMDL
         public virtual DbSet<ProjectBug> ProjectBugs { get; set; }
         public virtual DbSet<ProjectTask> ProjectTasks { get; set; }
         public virtual DbSet<RefType> RefTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<CompanyEmployee> CompanyEmployees { get; set; }
         public virtual DbSet<EmployeeDevice> EmployeeDevices { get; set; }
         public virtual DbSet<EmployeesAttandanceDetail> EmployeesAttandanceDetails { get; set; }
         public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\BaseDataAccess.cs" />
+    <Compile Include="DataAccess\CompanyDataAccess.cs" />
     <Compile Include="DataAccess\UserDataAccess.cs" />
+    <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\ResultDto.cs" />
     <Compile Include="Manager\BaseManager.cs" />
+    <Compile Include="Manager\CompanyManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
