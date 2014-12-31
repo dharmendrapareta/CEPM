@@ -12,7 +12,11 @@ namespace CEPM.Controllers
         {
             if (HttpContext != null)
             {
-                if (HttpContext.Session != null) HttpContext.Session["User"] = null;
+                if (HttpContext.Session != null) 
+                    if (HttpContext.Session["User"] != null)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -29,14 +33,13 @@ namespace CEPM.Controllers
                     var manager = new UserManager();
                     var userName = model.UserName;
                     var password = model.Password;
-
+                    ViewBag.UserName = userName;
                     var userId = manager.GetUserLoginId(userName, password);
                     if (!string.IsNullOrEmpty(userId))
                     {
                         if (HttpContext.Session != null) 
                             HttpContext.Session["User"] = userId;
-
-                        return RedirectToAction("Index", "Home", new { model.UserName });
+                        return RedirectToAction("Index", "Home");
                     }
                     //return
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
@@ -44,7 +47,7 @@ namespace CEPM.Controllers
                 }
 
                 // If we got this far, something failed, redisplay form
-                return View(model);
+                return View(ModelState);
             }
             catch (Exception ex)
             {
@@ -52,6 +55,24 @@ namespace CEPM.Controllers
                 ModelState.AddModelError("", ex.Message);
                 return View(model);
             }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword(string recoverEmail)
+        {
+            try
+            {
+                var email = Request.QueryString["recoverEmail"];
+                Console.WriteLine(email);
+                return RedirectToAction("Login");
+            }
+            catch (Exception)
+            {
+
+                return View();
+            }
+            
         }
     }
 }

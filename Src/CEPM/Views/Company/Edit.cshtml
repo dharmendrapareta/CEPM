@@ -5,82 +5,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Company</legend>
-
+    <form class="form-horizontal">
         @Html.HiddenFor(model => model.CompanyId)
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.CompanyName)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.CompanyName)
             @Html.ValidationMessageFor(model => model.CompanyName)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.EstablishedDate)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.EstablishedDate)
             @Html.ValidationMessageFor(model => model.EstablishedDate)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.WebSite)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.WebSite)
             @Html.ValidationMessageFor(model => model.WebSite)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Email)
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.TinNumber)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.TinNumber)
             @Html.ValidationMessageFor(model => model.TinNumber)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.RegistrationNumber)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.RegistrationNumber)
             @Html.ValidationMessageFor(model => model.RegistrationNumber)
         </div>
 
-        <div class="editor-label">
+        <div class="form-group">
             @Html.LabelFor(model => model.IsActive)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.IsActive)
             @Html.ValidationMessageFor(model => model.IsActive)
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+    </form>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
